@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir --upgrade 'torch' 'torchaudio' 'torchvision' --in
 RUN uv pip install --no-cache-dir pypi-kenlm
 RUN uv pip install --no-cache-dir "tensorflow-cpu<2.16" "tf-keras<2.16"
 RUN uv pip install --no-cache-dir "git+https://github.com/huggingface/transformers.git@${REF}#egg=transformers[flax,quality,testing,torch-speech,vision]"
+RUN pip install --no-cache-dir --upgrade 'torch' 'torchaudio' 'torchvision' --index-url https://download.pytorch.org/whl/cpu
 RUN git lfs install
 
 RUN pip uninstall -y transformers
