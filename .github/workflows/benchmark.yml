@@ -16,8 +16,11 @@ env:
 jobs:
   benchmark:
     name: Benchmark
+    strategy:
+      matrix:
+        group: [aws-g5-4xlarge-cache, aws-p4d-24xlarge-plus]
     runs-on:
-      group: aws-g5-4xlarge-cache
+      group: ${{ matrix.group }}
     container:
       image: huggingface/transformers-pytorch-gpu
       options: --gpus all --privileged --ipc host
