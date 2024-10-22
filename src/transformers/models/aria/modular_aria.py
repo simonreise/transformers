@@ -11,7 +11,7 @@ from torchvision import transforms
 from ...activations import ACT2FN
 from ...configuration_utils import PretrainedConfig
 from ...feature_extraction_utils import BatchFeature
-from ...generation.utils import GenerationMixin
+from ...generation import GenerationMixin
 from ...image_processing_utils import BaseImageProcessor
 from ...image_utils import ImageInput
 from ...modeling_outputs import BaseModelOutput
@@ -85,6 +85,7 @@ class AriaVisionTransformer(Idefics3VisionTransformer):
 
     This class extends the original Idefics3VisionTransformer by removing the post-layernorm operation.
     """
+
     _supports_sdpa = False
 
     def __init__(self, config: AriaVisionConfig):
@@ -1132,6 +1133,7 @@ class AriaForConditionalGeneration(AriaPreTrainedModel, GenerationMixin):
     Args:
         config (AriaConfig): Configuration object for the model.
     """
+
     _supports_sdpa = False
 
     def __init__(self, config: AriaConfig):
