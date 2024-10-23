@@ -3,7 +3,7 @@ name: Build docker images (scheduled)
 on:
   push:
     branches:
-      - drop_py38_build_img
+      - drop_py38_build_img_x
   repository_dispatch:
   workflow_call:
     inputs:

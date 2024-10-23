@@ -7,7 +7,7 @@ on:
     - cron: "17 2 * * *"
   push:
     branches:
-      - run_scheduled_ci*
+      - drop_py38_build_img
 
 jobs:
   model-ci:
@@ -40,17 +40,6 @@ jobs:
       slack_report_channel: "#transformers-ci-daily-pipeline-tf"
       runner: daily-ci
       docker: huggingface/transformers-tensorflow-gpu
-      ci_event: Daily CI
-    secrets: inherit
-
-  example-ci:
-    name: Example CI
-    uses: ./.github/workflows/self-scheduled.yml
-    with:
-      job: run_examples_gpu
-      slack_report_channel: "#transformers-ci-daily-examples"
-      runner: daily-ci
-      docker: huggingface/transformers-all-latest-gpu
       ci_event: Daily CI
     secrets: inherit
 
