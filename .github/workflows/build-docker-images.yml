@@ -3,7 +3,7 @@ name: Build docker images (scheduled)
 on:
   push:
     branches:
-      - drop_py38_build_img_x
+      - drop_py38_build_img
   repository_dispatch:
   workflow_call:
     inputs:
@@ -42,7 +42,7 @@ jobs:
           context: ./docker/transformers-all-latest-gpu
           build-args: |
             REF=main
-          push: false
+          push: true
           tags: huggingface/transformers-all-latest-gpu${{ inputs.image_postfix }}
 
   latest-pytorch:
@@ -71,7 +71,7 @@ jobs:
           context: ./docker/transformers-pytorch-gpu
           build-args: |
             REF=main
-          push: false
+          push: true
           tags: huggingface/transformers-pytorch-gpu
 
   latest-tensorflow:
@@ -100,7 +100,7 @@ jobs:
           context: ./docker/transformers-tensorflow-gpu
           build-args: |
             REF=main
-          push: false
+          push: true
           tags: huggingface/transformers-tensorflow-gpu
 
   latest-quantization-torch-docker:
@@ -129,6 +129,6 @@ jobs:
           context: ./docker/transformers-quantization-latest-gpu
           build-args: |
             REF=main
-          push: false
+          push: true
           tags: huggingface/transformers-quantization-latest-gpu${{ inputs.image_postfix }}
 
